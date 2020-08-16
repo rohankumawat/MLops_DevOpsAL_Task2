@@ -44,21 +44,25 @@ We will be installing wget for downloading the files from URL, and before moving
 
 We will make a Jenkins entry in the sudoers file to give it root powers without the requirement for any password. We will also require Git installed to be used in Jenkins as a plugin.
 
-Here is the Dockerfile :
+Here is the ***Dockerfile:***
 
-Here is the command to build. To build the image we will use: ** . is to be replaced with the path of Dockerfile
+![docker_file](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/DockerFile.png)
+
+Here is the command to build:
 
 ```
 docker build -t taskjenkins:v1 .
-
 ```
+
 ***Step 2:*** Running the container and collecting needed pieces of information:
 
-Here is the command of docker run : 
+Here is the command to run our image: 
 
 ```
 docker run -it --privileged -P -v /:/host --name task taskjenkins:v1
 ```
+
+![docker_run](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/DockerRunCommand.png)
 
 Here we have three important noticeable points:
 
@@ -69,7 +73,14 @@ Here we have three important noticeable points:
 Now observe these two below mentioned images :
 
 Here you will find the initial password of Jenkins. This is needed to unlock Jenkins for the 1st time.
-Now type your IP address along with the port number and then copy-paste the initial password on the starting page of Jenkins.
+
+![jenkins_password](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/JenkinsPassword.png)
+
+Now type your IP address along with the port number and then copy-paste the initial password on the starting page of Jenkins:
+
+![IP_address](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Port.png)
+
+![Initial_page](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Jenkins1.png)
 
 ***Step 3:*** Jenkins Job1:
 
@@ -77,7 +88,13 @@ Go to the 'configure' of your job and fill these data. First, give the URL of yo
 
 And in build trigger just select Build Trigger Remotely and give a desired token name. This will help us to trigger Jenkins as soon as we push our code to GitHub remotely.
 
-Next, this is the code which gonna help to copy our files from Jenkins Workspace to our desired folder.
+Next, this is the code which will help copy our files from Jenkins Workspace to our desired folder.
+
+![job1](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job1(1).png)
+
+![job1](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job1(2).png)
+
+![job1](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job1(3).png)
 
 ***Step 4:*** Jenkins Job2:
 
@@ -94,6 +111,10 @@ A process/command that runs in such a modified environment cannot access files o
 * To reinstall the bootloader.
 * So firstly I have created a new environment using chroot command. Then checked whether the file is of HTML or PHP then accordingly launched the container.
 
+![jenkins_password](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job2(1).png)
+
+![jenkins_password](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job2(2).png)
+
 ***Step 5:*** Jenkins Email Configuration:
 
 Goto The Manage Jenkins, then Configuration and scroll down and fill up the email notification portion.
@@ -106,11 +127,22 @@ So firstly I have stored the status code of my webpage in the status variable. G
 
 If our PHP or HTML code has any error then it will send a notification to the developer. Follow the below picture.
 
+![job3](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job3(1).png)
+
+![job3](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job3(2).png)
+
+![job3](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job3(3).png)
+
 ***Step 7:*** Jenkins Job4:
 This job will keep on checking each minute if my docker container is running or not. These 5 start means each minute this job will automatically trigger itself.
+
+![job4](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Job4.png)
 
 ***Step 8:*** Creating Build Pipeline View:
 Just simply create one new My view in Jenkins and select Build Pipeline. Then at the end only mention job1 and you are done.
 
-# Testing Time!
+# Testing Time!!
 
+![build_pipeline](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/BuildPipeline.png)
+
+![email](https://github.com/rohankumawat/MLops_DevOpsAL_Task2/blob/master/Snippets/Email.png)
